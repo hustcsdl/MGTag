@@ -1,0 +1,53 @@
+***************************************************************
+*****************           FELINE          *******************
+**** Author :           Rene R. Veloso      *******************
+**** Email  :         renerv@dcc.ufmg.br    *******************
+***************************************************************
+
+The code is associated with the paper: 
+Reachability Queries in Very Large Graphs: A Fast Refined Online Search Approach (under review)
+
+Detailed usage is explained below, here we give sample usage
+for the main methods of the papers above.  
+---------------------------------------------------------------
+Feline  : ./feline sample.gra -test sample.test
+Feline-B: ./feline sample.gra -test sample.test -inv
+---------------------------------------------------------------
+
+This package is provided for the repeatability purposes. It may
+contain some (experimental )sections that is not mentioned in 
+the paper. PLEASE READ THE INSTRUCTIONS CAREFULLY
+to run the program flawlessly. Feel free to use it for
+research purposes.
+  
+The code is written in c++ and built on the codebase
+of the paper:
+Hilmi Yildirim, Vineet Chaoji and Mohammad J. Zaki : "GRAIL: Scalable Reachability Index for Large Graphs", Proceedings of the VLDB Endowment, 3(1):276-284. 2010. 
+
+It uses thesame graph format.
+
+To compile :
+make
+
+To run :
+./feline -h
+
+INPUT GRAPH FORMAT: (see sample.gra)
+ Notes : Second line gives the number of nodes n. The node ids should be in [0,n-1]. 
+
+TEST FILE FORMAT: (see sample.test)
+ - Each line contains triples (<source> <target> <reachability>)
+ The program compares its output with <reachability> value of each query and prints a success ratio which is supposed to be 1.
+ However if you dont know the ground truth, (i.e. for very large graphs) 
+     you can give any value for <reachability> and ignore the success ratio.
+
+
+The GRAPH needs to bo already a DAG !!!
+We do not provide any implementation of Tarjan's algorithm in our codes.
+
+For Feline-B algorithm, use "-inv" option.
+
+Sample usage:
+./feline input.gra -test test.txt (for Feline)
+./feline input.gra -test test.txt -inv (for Feline-B)
+
